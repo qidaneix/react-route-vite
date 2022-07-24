@@ -11,12 +11,14 @@ export function UseRoutes() {
     {
       path: "/",
       element: <App />,
+      cache: true,
       children: [
-        { path: "expenses", element: <Expenses /> },
+        { path: "expenses", element: <Expenses />, cache: true },
         {
           path: "invoices",
           element: <Invoices />,
-          children: [{ path: ":id", element: <Invoice /> }],
+          cache: true,
+          children: [{ path: ":id", element: <Invoice />, cache: false }],
         },
         {
           path: "*",
@@ -28,6 +30,6 @@ export function UseRoutes() {
         },
       ],
     },
-    { path: "/bpp", element: <Bpp /> },
+    { path: "/bpp", element: <Bpp />, cache: false },
   ]);
 }
